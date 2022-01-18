@@ -1,6 +1,6 @@
 AUTHORS
 INSTALL
-README
-netsyslog.py
+README.md
+netsyslog3.py
 netsyslog_test.py
 setup.py

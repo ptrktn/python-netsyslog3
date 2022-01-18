@@ -1,4 +1,4 @@
-"""netsyslog enables you to construct syslog messages and send them
+"""netsyslog3 enables you to construct syslog messages and send them
 (via UDP) to a remote syslog server directly from Python. You can send
 log messages that contain the current time, local hostname and calling
 program name (i.e. the typical requirement of a logging package) to
@@ -23,7 +23,7 @@ page<http://hacksaw.sourceforge.net/netsyslog/>}.
 """
 
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 
 import os
@@ -290,7 +290,7 @@ class Logger(object):
 
     def _send_packet_to_hosts(self, packet):
         for hostname in self._hostnames:
-            self._sock.sendto(str(packet), (hostname, self.PORT))
+            self._sock.sendto(str(packet).encode(), (hostname, self.PORT))
 
     def log(self, facility, level, text, pid=False):
         """Send the message text to all registered hosts.

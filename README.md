@@ -1,7 +1,7 @@
 README
 ======
 
-netsyslog enables you to construct syslog messages and send them (via
+netsyslog3 enables you to construct syslog messages and send them (via
 UDP) to a remote syslog server directly from Python. Unlike other
 syslog modules it allows you to set the metadata (e.g. time, host
 name, program name, etc.) yourself, giving you full control over the

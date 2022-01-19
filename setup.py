@@ -10,7 +10,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 if __name__ == "__main__":
     setuptools.setup(py_modules=["netsyslog3"],
           name="netsyslog3",
-          version="0.1.1",
+          version="0.1.2",
           author="Graham Ashton",
           author_email="ashtong@users.sourceforge.net",
           url="https://github.com/ptrktn/python-netsyslog3",

@@ -4,26 +4,30 @@ log messages that contain the current time, local hostname and calling
 program name (i.e. the typical requirement of a logging package) to
 one or more syslog servers.
 
-Unlike other syslog modules netsyslog also allows you to set the
+Unlike other syslog modules netsyslog3 also allows you to set the
 metadata (e.g. time, host name, program name, etc.) yourself, giving
 you full control over the contents of the UDP packets that it creates.
 
 See L{Logger.log} and L{Logger.send_packet} for a synopsis of these
 two techniques.
 
-The format of the UDP packets sent by netsyslog adheres closely to
+The format of the UDP packets sent by netsyslog3 adheres closely to
 that defined in U{RFC 3164<http://www.ietf.org/rfc/rfc3164.txt>}. Much
 of the terminology used in the RFC has been incorporated into the
 names of the classes and properties and is used throughout this
 documentation.
 
-Further information and support can be found from the U{netsyslog home
+Further information of the original netsyslog and support can be found
+from the U{netsyslog home
 page<http://hacksaw.sourceforge.net/netsyslog/>}.
+
+This netsyslog3 repository is maintained on
+U{GitHub<https://github.com/ptrktn/python-netsyslog3/}.
 
 """
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 
 import os

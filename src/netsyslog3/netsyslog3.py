@@ -184,7 +184,7 @@ class MsgPart(object):
     def __str__(self):
         content = self.content
         if self.pid is not None:
-            content = "[%s]:" % self.pid + content
+            content = "[%s]" % self.pid + content
         return self.tag + content
 
     def _get_tag(self):

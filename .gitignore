@@ -1,1 +1,4 @@
 *.pyc
+build/
+dist/
+src/netsyslog3.egg-info/

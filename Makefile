@@ -10,6 +10,7 @@ test:
 
 .PHONY: build
 build:
+	rm -fr ./dist
 	python3 -m build
 
 .PHONY: upload

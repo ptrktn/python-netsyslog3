@@ -21,17 +21,16 @@ that defined in [RFC 3164](http://tools.ietf.org/html/rfc3164).
 
 ## Installation
 
-    pip install netsyslog3
+    pip install netsyslog3 --user
 
 ## Usage
 
-
     $ python3
-    >>> import netsyslog3
-    >>> import syslog
-    >>> logger = netsyslog3.Logger()
-    >>> logger.add_host("somehost.mydomain.com")
-    >>> logger.add_host("otherhost.mydomain.com")
-    >>> logger.log(syslog.LOG_USER, syslog.LOG_NOTICE, "Hey, it works!", pid=True)
+    import netsyslog3
+    import syslog
+    logger = netsyslog3.Logger()
+    logger.add_host("somehost.mydomain.com")
+    logger.add_host("otherhost.mydomain.com")
+    logger.log(syslog.LOG_USER, syslog.LOG_NOTICE, "Hey, it works!", pid=True)
 
-The [API docs](http://hacksaw.sourceforge.net/netsyslog/doc/) are also available over on the (old) SourceForge site.
+The [API docs](http://hacksaw.sourceforge.net/netsyslog/doc/) of the original netsyslog are available over on the (old) SourceForge site.

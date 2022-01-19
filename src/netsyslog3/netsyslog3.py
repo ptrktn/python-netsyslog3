@@ -112,7 +112,7 @@ class HeaderPart(object):
             if ord(char) < 32 or ord(char) > 126:
                 return False
         return True
-    
+
     def _set_timestamp(self, value):
         if not self._timestamp_is_valid(value):
             value = self._calculate_current_timestamp()
@@ -172,7 +172,7 @@ class MsgPart(object):
         If the pid is set it will be prepended to the content in
         square brackets when the packet is created.
 
-        """        
+        """
         self.tag = tag
         self.content = content
         self.pid = pid
@@ -180,7 +180,7 @@ class MsgPart(object):
     def __str__(self):
         content = self.content
         if self.pid is not None:
-            content = "[%s]" % self.pid + content
+            content = "[%s]:" % self.pid + content
         return self.tag + content
 
     def _get_tag(self):
@@ -188,7 +188,7 @@ class MsgPart(object):
 
     def _set_tag(self, value):
         if value is None:
-            value = sys.argv[0]
+            value = os.path.basename(sys.argv[0])
         self._tag = value[:self.MAX_TAG_LEN]
 
     tag = property(_get_tag, _set_tag, None,
@@ -292,7 +292,7 @@ class Logger(object):
         for hostname in self._hostnames:
             self._sock.sendto(str(packet).encode(), (hostname, self.PORT))
 
-    def log(self, facility, level, text, pid=False):
+    def log(self, facility, level, text, pid=False, tag=None):
         """Send the message text to all registered hosts.
 
         The facility and level will be used to create the packet's PRI
@@ -303,7 +303,7 @@ class Logger(object):
         This is the simplest way to use netsyslog, creating log
         messages containing the current time, hostname, program name,
         etc. This is how you do it::
-        
+
             logger = netsyslog.Logger()
             logger.add_host("localhost")
             logger.log(syslog.LOG_USER, syslog.LOG_INFO, "Hello World")
@@ -316,9 +316,9 @@ class Logger(object):
         pri = PriPart(facility, level)
         header = HeaderPart()
         if pid:
-            msg = MsgPart(content=text, pid=os.getpid())
+            msg = MsgPart(content=text, pid=os.getpid(), tag=tag)
         else:
-            msg = MsgPart(content=text)
+            msg = MsgPart(content=text, tag=tag)
         packet = Packet(pri, header, msg)
         self._send_packet_to_hosts(packet)
 
